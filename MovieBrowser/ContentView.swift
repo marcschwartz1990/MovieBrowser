@@ -7,23 +7,9 @@
 
 import SwiftUI
 
-// MARK: - Get an API Key from MovieDB
-
-// TODO: Create Search bar with "go" button
-
-// TODO: Create Main View (scrollable list of search results where each listing is a button to a detail view)
-
-// TODO: Detail View must contain a placeholder image.
-
-
-
-
-
 struct ContentView: View {
     @StateObject var movieListVM = MovieListViewModel()
-    
     @State private var searchTerm = ""
-    
     
     var body: some View {
         NavigationView {

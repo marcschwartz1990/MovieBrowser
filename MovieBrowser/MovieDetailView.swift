@@ -44,7 +44,6 @@ struct MovieDetailView: View {
                     }
                 }
                 .fixedSize(horizontal: true, vertical: false)
-                
             }
             .padding()
             

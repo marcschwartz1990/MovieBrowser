@@ -25,7 +25,7 @@ struct MovieTitleView: View {
             Spacer()
             
             VStack(alignment: .trailing) {
-                Text(String(format: "%.1f", movie.voteAverage))
+                Text(movie.voteAverage)
             }
         }
     }

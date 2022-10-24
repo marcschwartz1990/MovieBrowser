@@ -9,8 +9,6 @@ import Foundation
 
 @MainActor
 class MovieListViewModel: ObservableObject {
-    // This is where the UI grabs all of its needed properties, functions.
-    
     @Published var movies: [MovieViewModel] = []
     
     func search(name: String) async {
@@ -35,8 +33,12 @@ struct MovieViewModel: Identifiable {
         movie.id ?? -1
     }
     
-    var voteAverage: Double {
-        movie.voteAverage ?? -1.0
+    var voteAverage: String {
+        let avg = movie.voteAverage ?? -1.0
+        if movie.voteAverage == 0.0 || avg == -1.0 {
+            return "N/A"
+        }
+        return String(format: "%.1f", avg)
     }
     
     var releaseDate: Date? {

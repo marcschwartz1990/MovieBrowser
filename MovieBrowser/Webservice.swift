@@ -10,12 +10,10 @@ import SwiftUI
 
 enum NetworkError: Error {
     case badURL
-    // TODO: Incorporate response catch in URLSession call
     case badID
 }
 
 class Webservice {
-    // Provides functionality relating to networking
     func getMovies(searchTerm: String) async throws -> [Movie] {
         var components = URLComponents()
         components.scheme = "https"
@@ -39,20 +37,6 @@ class Webservice {
         
         let movieResponse = try? JSONDecoder().decode(MovieResponse.self, from: data)
         
-        // If movieResponse has a value, then access results. Otherwise, return an empty array (optional chaining)
         return movieResponse?.results ?? []
-    }
-    
-    func getImageURL(posterURL: String, width: Int) throws -> URL {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "image.tmdb.org"
-        components.path = "t/p/" + "w" + "\(width)" + posterURL
-
-        guard let url = components.url else {
-            print("Invalid URL")
-            throw NetworkError.badURL
-        }
-        return url
     }
 }
